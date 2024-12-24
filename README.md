@@ -14,5 +14,5 @@ Mood Music App — is an app, that generates personal music playlists based on u
 - **Database:** MongoDB
 - **Integration:** Spotify API
 
-## Автор
+## Author
 Antonina Bondar IM-21

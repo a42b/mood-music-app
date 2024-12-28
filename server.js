@@ -1,17 +1,7 @@
-const express = require('express');
-const app = express();
-const cors = require('cors');
+const mongoose = require('mongoose');
 
-app.use(cors());
-app.use(express.json());
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/moodMusicApp');
 
-const moodRoutes = require('./server/routes/mood');
-const playlistRoutes = require('./server/routes/playlist');
 
-app.use('/api/mood', moodRoutes);
-app.use('/api/playlist', playlistRoutes);
-
-const PORT = 5000;
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+mongoose.connection.on('connected', () => console.log('Connected to MongoDB'));
+mongoose.connection.on('error', (err) => console.error('Error connecting to MongoDB:', err));

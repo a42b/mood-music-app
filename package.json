@@ -30,8 +30,10 @@
   "devDependencies": {
     "eslint": "^8.57.1",
     "husky": "^9.1.7",
+    "jest": "^27.5.1",
     "npm-force-resolutions": "^0.0.10",
-    "prettier": "^3.4.2"
+    "prettier": "^3.4.2",
+    "supertest": "^7.0.0"
   },
   "resolutions": {
     "nth-check": "2.1.1",

@@ -3,8 +3,8 @@ const router = express.Router();
 const SpotifyWebApi = require('spotify-web-api-node');
 
 const spotifyApi = new SpotifyWebApi({
-    clientId: 'your-client-id',
-    clientSecret: 'your-client-secret',
+    clientId: '',
+    clientSecret: '',
     redirectUri: 'http://localhost:5000/api/auth/callback',
 });
 router.get('/login', (req, res) => {

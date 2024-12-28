@@ -2,21 +2,17 @@ const express = require('express');
 const router = express.Router();
 const spotifyApi = require('../spotify');
 
-// Endpoint to classify tracks by mood
 router.get('/:mood', async (req, res) => {
     const mood = req.params.mood;
 
     try {
-        // Fetch tracks from Spotify
         const data = await spotifyApi.searchTracks(`mood:${mood}`, { limit: 10 });
         const tracks = data.body.tracks.items;
 
-        // Fetch audio features for each track
         const trackFeatures = await Promise.all(
             tracks.map((track) => spotifyApi.getAudioFeaturesForTrack(track.id))
         );
 
-        // Classify tracks by mood
         const classifiedTracks = tracks.map((track, index) => {
             const mood = classifyMood(trackFeatures[index].body);
             return {
@@ -29,12 +25,11 @@ router.get('/:mood', async (req, res) => {
             };
         });
 
-        // Filter tracks by the requested mood
         const filteredTracks = classifiedTracks.filter((track) => track.mood === mood);
 
         res.json(filteredTracks);
     } catch (err) {
-        console.error('Error fetching tracks:', err); // Log the actual error
+        console.error('Error fetching tracks:', err); 
         res.status(500).json({ error: 'Failed to fetch tracks' });
     }
 });
@@ -53,3 +48,6 @@ function classifyMood(features) {
 }
 
 module.exports = router;
+module.exports = {
+    classifyMood, 
+};

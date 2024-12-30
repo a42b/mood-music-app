@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const spotifyApi = require('../spotify');
 
+// Define the route
 router.get('/:mood', async (req, res) => {
     const mood = req.params.mood;
 
@@ -34,7 +35,7 @@ router.get('/:mood', async (req, res) => {
     }
 });
 
-
+// Mood classification function
 function classifyMood(features) {
     const { valence, energy } = features;
 
@@ -47,7 +48,8 @@ function classifyMood(features) {
     }
 }
 
-module.exports = router;
+// Export both the router and classifyMood
 module.exports = {
-    classifyMood, 
+    router,
+    classifyMood,
 };

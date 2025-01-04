@@ -1,9 +1,9 @@
 const { classifyMood } = require('../../server/routes/mood');
 
-jest.mock('../spotify', () => ({
+jest.mock('../../server/spotify', () => ({
     getAccessToken: jest.fn(() => Promise.resolve('mock-access-token')),
   }));
-  
+
 describe('classifyMood', () => {
     test('should classify as happy mood', () => {
         const features = { valence: 0.8, energy: 0.7 };

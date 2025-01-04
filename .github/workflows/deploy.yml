@@ -18,10 +18,8 @@ jobs:
     - name: Build the project
       run: npm run build
 
-    - name: Configure Git user
+    - name: Deploy to GitHub Pages
       run: |
         git config --global user.email "toniabondar31@gmail.com"
         git config --global user.name "a42b"
-
-    - name: Deploy to GitHub Pages
-      run: npm run deploy
+        npx gh-pages -d build --repo https://${{ secrets.GH_TOKEN }}@github.com/a42b/mood-music-app.git

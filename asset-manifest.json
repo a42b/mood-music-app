@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/mood-music-app/static/js/main.7ae8a037.js",
+    "index.html": "/mood-music-app/index.html",
+    "main.7ae8a037.js.map": "/mood-music-app/static/js/main.7ae8a037.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.7ae8a037.js"
+  ]
+}

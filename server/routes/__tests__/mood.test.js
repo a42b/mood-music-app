@@ -20,6 +20,3 @@ describe('classifyMood', () => {
     });
 });
 
-module.exports = {
-    classifyMood, 
-};

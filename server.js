@@ -1,19 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
-const authRoutes = require('./server/routes/auth');
-const { router: moodPlaylistRoutes } = require('./server/routes/mood'); // Destructure the router
-
+const spotifyRoutes = require('./server/spotify'); // Import spotify routes
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-// Use the routes
-app.use('/api/auth', authRoutes);
-app.use('/api/mood', moodPlaylistRoutes);
+// Add Spotify authentication routes
+spotifyRoutes(app);
 
 // MongoDB connection
 mongoose.connect('mongodb://localhost:27017/moodmusic', {
@@ -29,11 +25,13 @@ mongoose.connection.on('error', (err) => {
     console.error('Error connecting to MongoDB:', err);
 });
 
-// Export the app and mongoose for testing
-module.exports = { app, mongoose };
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
 
-// Start the server if not in test mode
-if (process.env.NODE_ENV !== 'test') {
-    const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
-}
+const path = require('path');
+
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});

@@ -8,7 +8,7 @@
     "start": "node server.js",
     "frontend": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test":"react-scripts test --testMatch '**/__tests__/**/*.[jt]s?(x)' '**/?(*.)+(unit.test).[jt]s?(x)'",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "lint": "eslint 'src/**/*.{js,jsx}' || true"

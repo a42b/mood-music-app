@@ -3,8 +3,6 @@
 ## Overview
 Mood Music App — is an app, that generates personal music playlists based on user`s mood.
 
-## Діаграма компонентів
-![Діаграма компонентів](./diagrams/components.png)
 
 
 ## Functionality

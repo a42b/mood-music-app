@@ -1,4 +1,4 @@
-const { classifyMood } = require('../mood');
+const { classifyMood } = require('../../server/routes/mood');
 
 describe('classifyMood', () => {
     test('should classify as happy mood', () => {

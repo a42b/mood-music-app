@@ -1,5 +1,5 @@
 const request = require('supertest');
-const { app, mongoose } = require('../../../server');
+const { app, mongoose } = require('../../server');
 
 beforeAll(async () => {
     await mongoose.connect('mongodb://localhost:27017/moodmusic', {
@@ -26,3 +26,5 @@ describe('Integration Tests for Mood API', () => {
         expect(response.body.error).toBeDefined();
     });
 });
+
+

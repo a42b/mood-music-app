@@ -8,7 +8,7 @@
     "start": "node server.js",
     "frontend": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --testPathPattern='routes/__tests__'",
+    "test": "react-scripts test --testPathPattern='src/__tests__/mood.test.js'",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "lint": "eslint 'src/**/*.{js,jsx}' || true"
